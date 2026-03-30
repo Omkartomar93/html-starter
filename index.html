@@ -1,96 +1,1247 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar Tomar - Backend Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .background-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main content wrapper */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Floating animation */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating-icon {
+            display: inline-block;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            margin: 3rem 0;
+            border-radius: 1rem;
+            margin: 0 2rem 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            margin-bottom: 2rem;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 2rem;
+            margin: 0 2rem 3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) rotateZ(-2deg);
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .skill-category {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-light);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent);
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            margin: 0 2rem 3rem;
+            border-radius: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), rgba(59, 130, 246, 0));
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 50%;
+            text-align: right;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            text-align: left;
+            padding-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            width: 24px;
+            height: 24px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+            transform: translateX(0) translateY(-5px);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description::before {
+            content: '→ ';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+                padding-left: 0;
+                padding-right: 1.5rem;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 2rem;
+            margin: 0 2rem 3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(59, 130, 246, 0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            padding: 2rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            border: 1px solid var(--accent);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            margin: 0 2rem 3rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px) rotate(10deg);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        footer p {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Loading animation */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(59, 130, 246, 0.2);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="background-particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">OT</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Omkar Tomar</h1>
+                <p class="hero-subtitle">Backend Engineer | Node.js | Express.js | Nest.js</p>
+                <p class="hero-description">
+                    Building scalable enterprise systems with 2.6+ years of expertise in backend architecture, API design, and cloud services. Passionate about clean code and performance optimization.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get In Touch</button>
+                    <button class="btn btn-secondary" onclick="downloadResume()">Download Resume</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="section-divider"></div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a passionate Backend Engineer with 2.6+ years of hands-on experience building scalable, enterprise-grade systems. My expertise spans Node.js, Express.js, Nest.js, and TypeScript, with a strong foundation in API design, microservices architecture, and cloud services.
+                    </p>
+                    <p>
+                        At Progressive Infotech, I architected and developed a multi-tenant HRMS platform serving 500+ employees across 10+ organizations, optimizing API response times by 30% through strategic query optimization, Redis caching, and intelligent indexing.
+                    </p>
+                    <p>
+                        I'm driven by solving complex technical challenges and creating solutions that have real business impact. When I'm not coding, you'll find me exploring new technologies and best practices in backend engineering.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">2.6+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Active Users Served</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">API Performance Gain</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Weekly Deployments</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills" id="skills">
+            <h2 class="section-title">Core Skills</h2>
+            <div class="section-divider"></div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-category">🔧 Backend Development</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Nest.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Laravel</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">🔐 API & Security</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">JWT Auth</span>
+                        <span class="skill-tag">OAuth2</span>
+                        <span class="skill-tag">RBAC</span>
+                        <span class="skill-tag">UBAC</span>
+                        <span class="skill-tag">API Versioning</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">🏛️ Architecture</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">Event-Driven</span>
+                        <span class="skill-tag">Bull Queue</span>
+                        <span class="skill-tag">OOPs</span>
+                        <span class="skill-tag">Design Patterns</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">🗄️ Database</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Query Optimization</span>
+                        <span class="skill-tag">Indexing</span>
+                        <span class="skill-tag">Transactions</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">☁️ Cloud & DevOps</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">AWS S3</span>
+                        <span class="skill-tag">Microsoft Graph API</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">GitLab</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Linux</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">🎨 Frontend & Tools</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">RxJS</span>
+                        <span class="skill-tag">Tailwind</span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">WebSocket</span>
+                        <span class="skill-tag">Webhook</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience" id="experience">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="section-divider"></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sep 2023 – Present (2.6+ yrs)</div>
+                        <div class="timeline-title">Backend Engineer</div>
+                        <div class="timeline-company">Progressive Infotech, Noida</div>
+                        <div class="timeline-description">Architected modular Node.js/Express APIs for enterprise HRMS serving 500+ employees</div>
+                        <div class="timeline-description">Optimized APIs reducing response times by 30% via query optimization and Redis caching</div>
+                        <div class="timeline-description">Implemented RBAC/UBAC with dynamic approval workflows securing 8+ user roles</div>
+                        <div class="timeline-description">Integrated AWS S3 and Microsoft Graph API with Bull Queue async processing</div>
+                        <div class="timeline-description">Enabled 15+ weekly deployments and reduced HR processing time by 25%</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2023 – Aug 2023 (4 mos)</div>
+                        <div class="timeline-title">Backend Engineer (Intern)</div>
+                        <div class="timeline-company">Avantika Innovation, Noida</div>
+                        <div class="timeline-description">Built scalable Node.js APIs with JWT auth and full CRUD operations for 3+ clients</div>
+                        <div class="timeline-description">Optimized MySQL queries achieving 25% improvement in data retrieval</div>
+                        <div class="timeline-description">Integrated third-party payment and automation APIs; shipped Smart Task CRM and E-Invoice systems</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 – 2023</div>
+                        <div class="timeline-title">B.Tech Computer Science</div>
+                        <div class="timeline-company">IIMT Engineering College, Meerut</div>
+                        <div class="timeline-description">Graduated with strong foundation in data structures, algorithms, and system design</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="section-divider"></div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">WorkWave HR</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Enterprise HRMS for onboarding, leave, and attendance management. Designed multi-tenant architecture with complex payroll logic and 8+ role-based modules serving 500+ employees.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Express.js</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">Angular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Separation Portal</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Resignation and clearance workflows with multi-level approvals, automated audit trails, and real-time notifications for employee offboarding.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Nest.js</span>
+                            <span class="tech-badge">TypeScript</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Attendance & Leave System</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Real-time geo-tagged attendance APIs with automated leave accrual. Reduced HR processing time by 25% through intelligent automation.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Express.js</span>
+                            <span class="tech-badge">Geolocation API</span>
+                            <span class="tech-badge">Bull Queue</span>
+                            <span class="tech-badge">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Master Data Management</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Centralized API for organizational hierarchy with version control and audit trails. Achieved 30% faster retrieval and 25% reduced redundancy.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Microservices</span>
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">Audit Logging</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Smart Task CRM</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Client management portal with task automation, pipeline management, and real-time collaboration features for enterprise teams.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Express.js</span>
+                            <span class="tech-badge">Angular</span>
+                            <span class="tech-badge">MongoDB</span>
+                            <span class="tech-badge">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">E-Invoice System</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Invoice automation with async PDF generation, AWS S3 storage, and GST compliance. Automated 500+ daily document operations.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Bull Queue</span>
+                            <span class="tech-badge">AWS S3</span>
+                            <span class="tech-badge">PDF Generation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="section-divider"></div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Location</p>
+                    <p>Noida, India</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Phone</p>
+                    <a href="tel:+919760442086">+91-9760442086</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Email</p>
+                    <a href="mailto:omkarsingrajput93@gmail.com">omkarsingrajput93@gmail.com</a>
+                </div>
+            </div>
+
+            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Follow me on social media</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/omkar-tomar" target="_blank" class="social-link">in</a>
+                <a href="https://github.com" target="_blank" class="social-link">gh</a>
+                <a href="https://twitter.com" target="_blank" class="social-link">𝕏</a>
+                <a href="https://instagram.com" target="_blank" class="social-link">ig</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Omkar Tomar. All rights reserved. | Backend Engineer | Node.js | Nest.js | TypeScript</p>
+    </footer>
+
+    <script>
+        // Create animated background particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                const duration = 15 + Math.random() * 20;
+
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = Math.random() * duration + 's';
+
+                container.appendChild(particle);
+            }
+        }
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all skill cards, project cards, timeline items, and contact items
+        document.querySelectorAll('.skill-card, .project-card, .timeline-item, .contact-item, .stat-box').forEach(el => {
+            el.classList.add('scroll-animate');
+            observer.observe(el);
+        });
+
+        // Download resume function
+        function downloadResume() {
+            // In a real scenario, this would trigger a PDF download
+            const resumeContent = `
+OMKAR TOMAR
+Backend Engineer | Node.js | Express.js | Nest.js | PHP
++91-9760442086 • omkarsingrajput93@gmail.com • linkedin.com/in/omkar-tomar • Noida
+
+PROFESSIONAL SUMMARY
+Backend Engineer with 2.6+ years building scalable enterprise systems. Expert in Node.js, TypeScript, API design, event-driven architecture, and cloud services (AWS, Microsoft Graph API). Delivered multi-tenant HRMS supporting 500+ employees with optimized APIs (30% faster response times).
+
+CORE SKILLS
+Backend: Node.js, Express.js, Nest.js, TypeScript, JavaScript, PHP, Laravel
+API & Security: REST APIs, JWT Authentication, OAuth2, RBAC, UBAC, API Architecture, API Versioning
+Architecture: Microservices, Event-Driven Architecture, Queues (Bull), OOPs, Design Patterns
+Database: MySQL, Redis, Query Optimization, Indexing, Transactions
+DevOps: GitHub, GitLab, CI/CD, Linux
+Cloud & Caching: AWS S3, Microsoft Graph API, AWS(Basic), Redis(Basic)
+Tools: Swagger, Postman
+Realtime & Integrations: WebSocket, Webhook, 3rd Party Api Integration
+Frontend: Angular, Rxjs, Angular Material, Tailwind
+
+PROFESSIONAL EXPERIENCE
+Backend Engineer • Progressive Infotech, Noida • Sep 2023 – Present (2.6+ yrs)
+• Architected modular Node.js/Express APIs for enterprise HRMS serving 500+ employees
+• Optimized APIs reducing response times by 30%
+• Implemented RBAC/UBAC with dynamic approval workflows
+• Integrated AWS S3 and Microsoft Graph API
+• Enabled 15+ weekly deployments
+• Reduced HR processing time by 25%
+
+Backend Engineer (Intern) • Avantika Innovation, Noida • May 2023 – Aug 2023 (4 mos)
+• Built scalable Node.js APIs with JWT auth
+• Optimized MySQL queries achieving 25% improvement
+• Integrated third-party payment and automation APIs
+
+EDUCATION
+B.Tech Computer Science • IIMT Engineering College, Meerut (2019–2023)
+Intermediate • Jamini Public School, Meerut (2018–2019)
+
+AWARDS & RECOGNITION
+• Awarded 'Crystal in Coding (ATS)' for outstanding backend engineering
+            `;
+
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resumeContent));
+            element.setAttribute('download', 'Omkar_Tomar_Resume.txt');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Smooth scroll behavior for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Add scroll listener for nav highlight
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
+        });
+    </script>
+</body>
 </html>
